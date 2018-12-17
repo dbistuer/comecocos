@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<style>
+			button{
+				margin-top: 20px;
+				margin-left: 20px;
+			}
+			body{
+				background-color: black;
+			}
+			.teclat{
+				margin-top: 5%;
+				margin-left: 40%;
+				margin-bottom: 20px;
+			}
+			.infoImg{
+				margin-left: 35%;
+				width: 35%;
+				padding-top: 10px;
+				background-color: #FAF593;
+				border: 3px solid red;
+				border-radius: 30px;
+				text-align: center;
+			}
+			.tecles{
+				float: left;
+			}
+			.tecla{
+				display: flex;
+			}
+			p{
+				font-size: 20px;
+			}
+			.musica{
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				color: white;
+				text-align: center;
+			}
+			.musicaMenu{
+				margin-left: 10%;
+				display: flex;
+				margin-top: 470px;
+				color:white;
+			}
+		</style>
+		<title>Help</title>
+	</head>
+		<body>
+			<div class="botons-top">
+				<button class="btn btn-primary" onclick="history.back()" >Enrere</button>
+			</div>
+			<div class="teclat">
+				<img src="/p5/img/help/teclat.png" />
+			</div>
+			<div class="infoImg">
+				<p style="color:red;"><b>Informacio:</b> Aquestes son les teces utils per a jugar a aquest joc.</p>
+			</div>
+			</br></br>
+			<div class="tecles">
+				<div class="tecla">
+					<img src="/p5/img/help/amun.png"/>
+				</br>
+					<p style="margin-left: 20px; margin-top: 40px; color: white;">Presiona aquesta tecla per moure el pacman cap a dalt</p>
+				</div>
+				<div class="tecla">
+					<img src="/p5/img/help/avall.png"/>
+					<p style="margin-left: 20px; margin-top: 40px; color: white;">Presiona aquesta tecla per moure el pacman cap avall</p>
+				</div>
+				<div class="tecla">
+					<img src="/p5/img/help/esquerra.png"/>
+					<p style="margin-left: 20px; margin-top: 40px; color: white;">Presiona aquesta tecla per moure el pacman cap a l'esquerra</p>
+				</div>
+				<div class="tecla">
+					<img src="/p5/img/help/dreta.png"/>
+					<p style="margin-left: 20px; margin-top: 40px;  color: white;">Presiona aquesta tecla per moure el pacman cap a la dreta</p>
+				</div>
+			</div>
+			<div class="musicaMenu">
+				<p style="margin-top: 26px;">Vols musica ?&nbsp;&nbsp;&nbsp;</p>
+				<input type="checkbox" onclick="musica()" />
+				<p id="musicaSiNo" style=" margin-left: 10px;margin-top: 26px; color: red;">No</p>
+			</div>
+			<div class="musica">
+			<audio id="musica" hidden controls loop autoplay name="media">
+				<source id="source" src="" type="audio/mp3" >
+			</audio>
+			</div>
+			<script>
+				var primerCop=true;
+				var i=0;
+				function musica(){
+					if(primerCop){
+						document.getElementById("source").src = "/p5/musica/pacman_remix.mp3";
+						if(i==0){
+							document.getElementById("musica").load();
+							document.getElementById("musicaSiNo").innerText = "Si";
+							document.getElementById("musicaSiNo").style.color = "green"
+						}else{
+							document.getElementById("musica").play();
+							document.getElementById("musicaSiNo").innerText = "Si";
+							document.getElementById("musicaSiNo").style.color = "green"
+						}
+						i++;
+						primerCop=false;
+					}else{
+							document.getElementById("musica").pause();
+							document.getElementById("musicaSiNo").innerText = "No";
+							document.getElementById("musicaSiNo").style.color = "red"
+							primerCop=true;
+					}
+				}
+			</script>
+	</body>
+</html>
