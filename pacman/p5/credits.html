@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bowser/1.9.4/bowser.min.js"></script>
+		<style>
+		/*La tipografia de pacman*/
+			@font-face{
+				font-family: 'DANI';
+				src: url(/p5/tipografia/PAC-FONT.TTF) format('truetype');
+			}
+			.centrar{
+        text-align: center;
+			}
+			body{
+				background-color: black;
+        color: white;
+			}
+			p{
+				font-size:20px;
+				/*font-family: DANI;*/
+				color: white;
+			}
+			button{
+				margin-top: 20px;
+				margin-left: 20px;
+			}
+      .texte{
+        margin-left: 30%;
+      }
+      .musica{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+      }
+      .musicaMenu{
+        margin-left: 10%;
+        display: flex;
+        margin-top: 320px;
+        color:white;
+      }
+		</style>
+		<title>Credits</title>
+	</head>
+		<body>
+			<button class="btn btn-primary" onclick="history.back()" >Enrere</button>
+      <br /><br />
+			<div class="centrar">
+				<h1>CREDITS I AGRAIMENTS</h1>
+        <HR>
+      </div>
+      <div class="texte">
+        <p><b>Creacio:</b>Daniel Bistuer Marco </p>
+        <p><b>Tipògrafia de la lletra:</b> Fontalicious ®</p>
+        <p><b>Imatges:</b>  Flaticon ®</p>
+        <p><b>Agraiments:</b>  Eduard Gutierrez (Ajuda amb el codi en moments de bloqueig)</p>
+        <p><b>Musica pacman:</b> http://www.sonidosmp3gratis.com </p>
+        <p><b>Musica pagines:</b> VexD&B </p>
+      </div>
+      <div class="musicaMenu">
+				<p style="margin-top: 26px;">Vols musica ?&nbsp;&nbsp;&nbsp;</p>
+				<input type="checkbox" onclick="musica()" />
+				<p id="musicaSiNo" style=" margin-left: 10px;margin-top: 26px; color: red;">No</p>
+			</div>
+      <div class="musica">
+      <audio id="musica" hidden controls loop autoplay name="media">
+        <source id="source" src="" type="audio/mp3" >
+      </audio>
+      </div>
+      <script>
+        var primerCop=true;
+      	var i=0;
+        function musica(){
+          if(primerCop){
+            document.getElementById("source").src = "/p5/musica/pacman_remix.mp3";
+            if(i==0){
+              document.getElementById("musica").load();
+              document.getElementById("musicaSiNo").innerText = "Si";
+              document.getElementById("musicaSiNo").style.color = "green"
+            }else{
+              document.getElementById("musica").play();
+              document.getElementById("musicaSiNo").innerText = "Si";
+              document.getElementById("musicaSiNo").style.color = "green"
+            }
+            i++;
+            primerCop=false;
+          }else{
+              document.getElementById("musica").pause();
+              document.getElementById("musicaSiNo").innerText = "No";
+              document.getElementById("musicaSiNo").style.color = "red"
+              primerCop=true;
+          }
+        }
+      </script>
+	</body>
+</html>
