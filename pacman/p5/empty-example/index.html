@@ -1,6 +1,58 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+    @font-face{
+      font-family: 'DANI';
+      src: url(../tipografia/PAC-FONT.TTF) format('truetype');
+    }
+    body{
+      background-color: #003399;
+      font-family: DANI;
+    }
+    canvas{
+      margin-left: 35%;
+      margin-top: 10px;
+    }
+    p b, h2 b{
+      font-family: sans-serif;
+    }
+    .btn-primary{
+      background-color: black;
+      border-color: grey;
+    }
+    button{
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-bottom: 20px;
+      font-family:DANI;
+    }
+    .inportant{
+      display: block;
+      border: 3px solid;
+      border-color: yellow;
+      border-radius: 25px;
+      padding: 10px;
+      width: 400px;
+      background-color: black;
+      color: yellow;
+    }
+    .partida{
+      clear: both;
+      display: flex;
+      margin-top: 20px;
+    }
+    #CuentaAtras{
+      margin-top: -7px;
+      margin-left: 20px;
+      border: 2px solid yellow;
+      width: 60px;
+      text-align: center;
+      height: 35px;
+    }
+
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>p5.js example</title>
@@ -17,5 +69,89 @@
     <script src="Pacman.js"></script>
   </head>
   <body>
+    <div class="botons-top">
+      <button class="btn btn-primary" onclick="history.back()" >Enrere</button>
+    </div>
+    <div class="inportant">
+    <h3 id='usu' onload="posicionar()">Usuari: </h3>
+    <p id='niv'></p>
+    <p id='vid'>Vides restants: <b style="font-size: 20px;">1</b></p>
+    <p id="puntuacio"> Puntuacio: <b style="font-size: 20px;">0</b></p>
+<div class="partida">
+    <p>Partida perduda en -></p>
+    <p id='CuentaAtras'></p>
+  </div>
+  </div>
+
+    <script>
+    var usuari;
+    var dificultat;
+    var totalTiempo;
+    var primerCop=true;
+var url="../index.html";
+
+function updateReloj(){
+  if(primerCop){
+    usuari = sessionStorage.getItem("usuari");
+    dificultat = sessionStorage.getItem("nivell");
+    document.getElementById('usu').innerHTML = "Usuari: "+ usuari;
+    document.getElementById('niv').innerHTML = "Dificultat: <b style='font-size: 20px;'>"+ dificultat+"</b>";
+      if (dificultat==1) {
+        totalTiempo=45;
+      }else if (dificultat==2) {
+        totalTiempo = 40
+      }else if (dificultat==3) {
+        totalTiempo =35
+      }else if (dificultat==4) {
+        totalTiempo =30
+      }else if (dificultat==5) {
+        totalTiempo =25
+      }else if (dificultat==6) {
+        totalTiempo =20
+      }else if (dificultat==7) {
+        totalTiempo =15
+      }else if (dificultat==8) {
+        totalTiempo =13
+      }else if (dificultat==9) {
+        totalTiempo =11
+      }else if (dificultat==10){
+        totalTiempo=10;
+      }else{
+        totalTiempo=6;
+      }
+      primerCop=false;
+    }
+    if(totalTiempo<6){
+      document.getElementById('CuentaAtras').style.color= "red";
+      document.getElementById('CuentaAtras').innerHTML = "<b style='font-size: 20px;'>0:"+totalTiempo+"</b>";
+
+      document.getElementById('vid').innerHTML = "Vides restants: <b style='font-size: 20px;'>"+myPacman.lives+"</b>";
+    }else{
+      document.getElementById('CuentaAtras').style.color= "yellow";
+      document.getElementById('CuentaAtras').innerHTML = "<b style='font-size: 20px;'>0:"+totalTiempo+"</b>";
+    }
+    if(totalTiempo==0)
+    {
+        /*window.location=url;*/
+      if(myPacman.lives==0){
+        myPacman.lives= myPacman.lives-1;
+        document.getElementById('vid').innerHTML = "Vides restants: <b style='font-size: 20px;'>"+myPacman.lives+"</b>";
+        alert("Vides restants: "+myPacman.lives);
+        primerCop=true;
+        updateReloj();
+      }else{
+        alert('Game over!!');
+        window.location.reload();
+        //window.location=url;
+      }
+    }else{
+        totalTiempo-=1;
+        setTimeout("updateReloj()",1000);
+    }
+}
+
+window.onload=updateReloj;
+
+    </script>
   </body>
 </html>

@@ -4,7 +4,7 @@ class Pacman extends GameObject{
     super(row,col);
     this.direction=2;
     this.score =0;
-    this.lives = 3;
+    this.lives = 1;
     this.frame=0;
     this.perimetre = 16;
   }
@@ -40,7 +40,12 @@ class Pacman extends GameObject{
 eatFood(menjar){
   var distancia=dist(this.row,this.col,menjar.row,menjar.col);
   if(distancia<16){
-    this.score++;
+    if(sessionStorage.getItem("nivell")!=null){
+      this.score=this.score + parseInt(sessionStorage.getItem("nivell"));
+    }else{
+      this.score++;
+    }
+    document.getElementById('puntuacio').innerHTML = "Puntuacio: <b style='font-size: 20px;'>"+this.score+"</b>";
     return true;
   }else{
     return false;
@@ -51,6 +56,7 @@ eatRaim(raim){
   var distancia = dist(this.row,this.col,raim.row,raim.col);
   if(distancia<16){
     this.score=this.score*2;
+    document.getElementById('puntuacio').innerHTML = "Puntuacio: <b style='font-size: 20px;'>"+this.score+"</b>";
     return true;
   }else{
     return false;
@@ -61,7 +67,8 @@ xocRoca(roca){
   var distancia = dist(this.row,this.col,roca.row,roca.col);
   if(distancia<16){
     this.lives--;
-    alert('Vides: '+this.lives);
+    alert('Vides restants: '+this.lives);
+    document.getElementById('vid').innerHTML = "Vides restants: <b style='font-size: 20px;'>"+myPacman.lives+"</b>";
     reposicionarPacman(this.direction);
   }else{
     return false;

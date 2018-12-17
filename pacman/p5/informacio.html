@@ -7,24 +7,36 @@
 		/*La tipografia de pacman*/
 			@font-face{
 				font-family: 'DANI';
-				src: url(/p5/tipografia/PAC-FONT.TTF) format('truetype');
+				src: url(tipografia/PAC-FONT.TTF) format('truetype');
+			}
+			.btn-primary{
+				background-color: black;
+				border-color: grey;
 			}
 			.centrar{
 				position: absolute;
 				top: 20%;
-				left: 35%;
+				left: 20%;
 			}
 			body{
-				background-color: black;
+				background-color: #003399;
 			}
 			p{
 				font-size:20px;
-				/*font-family: DANI;*/
 				color: white;
+			}
+			p{
+							font-family: DANI;
+			}
+			p i{
+				font-family: sans-serif;
+				font-style: normal;
 			}
 			button{
 				margin-top: 20px;
 				margin-left: 20px;
+				font-family:DANI;
+
 			}
 			.musica{
 				position: fixed;
@@ -48,7 +60,7 @@
 			<div class="centrar">
 				<script>
 					document.write('<p><b>Nom del navegador: </b>'+bowser.name+'</p>');
-					document.write('<p><b>Versio del navegador: </b>'+bowser.version+'</p>');
+					document.write('<p><b>Versio del navegador: </b><i>'+bowser.version+'</i></p>');
 					var OSName="Desconocido";
 					if (navigator.appVersion.indexOf("Win")!=-1){
 						OSName="Windows";
@@ -64,14 +76,14 @@
 					document.write('<p><b>El teu sistema operatiu es: </b>'+OSName+'</p>');
 					document.write('<p><b>El teu idioma es: </b>'+window.navigator.language+'</p>');
 					document.write('<p><b>El teu hostname es: </b>'+window.location.href+'</p>');
-					document.write('<p><b>La darrera modificacio del document es va produir: </b>'+document.lastModified+'</p>');
-					document.writeln('<p><b>Resolucio de la pantalla: </b>'+screen.width + " x " + screen.height+'</p>');
+					document.write('<p><b>La darrera modificacio del document es va produir: </b><i>'+document.lastModified+'</i></p>');
+					document.writeln('<p><b>Resolucio de la pantalla: </b><i>'+screen.width + "</i> x <i>" + screen.height+'</i></p>');
 				</script>
 			</div>
 			<div class="musicaMenu">
-				<p style="margin-top: 26px;">Vols musica ?&nbsp;&nbsp;&nbsp;</p>
+				<p style="margin-top: 26px; font-family:DANI;">Vols musica <i>?</i>&nbsp;&nbsp;&nbsp;</p>
 				<input type="checkbox" onclick="musica()" />
-				<p id="musicaSiNo" style=" margin-left: 10px;margin-top: 26px; color: red;">No</p>
+				<p id="musicaSiNo" style=" margin-left: 10px;margin-top: 26px; color: red; font-family: DANI;">No</p>
 			</div>
 			<div class="musica">
 			<audio id="musica" hidden controls loop autoplay name="media">
@@ -83,7 +95,7 @@
 				var i=0;
 				function musica(){
 					if(primerCop){
-						document.getElementById("source").src = "/p5/musica/pacman_remix.mp3";
+						document.getElementById("source").src = "musica/pacman_remix.mp3";
 						if(i==0){
 							document.getElementById("musica").load();
 							document.getElementById("musicaSiNo").innerText = "Si";
