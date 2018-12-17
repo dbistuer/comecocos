@@ -41,6 +41,7 @@ eatFood(menjar){
   var distancia=dist(this.row,this.col,menjar.row,menjar.col);
   if(distancia<16){
     this.score++;
+    document.getElementById('puntuacio').innerHTML = "Puntuacio: <b style='font-size: 20px;'>"+this.score+"</b>";
     return true;
   }else{
     return false;
@@ -51,6 +52,7 @@ eatRaim(raim){
   var distancia = dist(this.row,this.col,raim.row,raim.col);
   if(distancia<16){
     this.score=this.score*2;
+    document.getElementById('puntuacio').innerHTML = "Puntuacio: <b style='font-size: 20px;'>"+this.score+"</b>";
     return true;
   }else{
     return false;

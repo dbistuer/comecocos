@@ -75,7 +75,7 @@ function draw() {
       }
     }
   for(longitud=0;longitud<raimMapa.length;longitud++){
-      if(myPacman.eatFood(raimMapa[longitud])){
+      if(myPacman.eatRaim(raimMapa[longitud])){
         raimMapa.splice(longitud, 1);
       }
     }
