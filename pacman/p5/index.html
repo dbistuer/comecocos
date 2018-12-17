@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="/p5/img/principal/pac.png" rel="shortcut icon" />
+		<title>Pacman</title>
+		<style>
+			/*La tipografia de pacman*/
+			@font-face{
+				font-family: 'DANI';
+				src: url(/p5/tipografia/PAC-FONT.TTF) format('truetype');
+			}
+
+			img{
+				display:block;
+				width:60%;
+				height:auto;
+				margin:20px auto auto auto;
+			}
+			body{
+				background-color:black;
+			}
+			.menu{
+				margin-top:20px;
+			}
+			.btn{
+				width:55%;
+				height:auto;
+				margin:20px auto auto auto;
+			}
+			.btn-lg{
+				font-size:100%;
+			}
+			.btn-primary{
+				background-color:#005ce6;
+				border-color:#005ce6;
+			}
+			.btn-primary:hover{
+				background-color:#ffff66;
+				border-color:#ffff66;
+				color: black;
+			}
+			.btn-primary:focus{
+				background-color:#ffff66;
+				border-color:#ffff66;
+				color: black;
+			}
+			.btn-primary:click{
+				background-color:#ffff66;
+				border-color:#ffff66;
+				color: black;
+			}
+			aE{
+				font-family:DANI;
+			}
+			.musica{
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				color: white;
+				text-align: center;
+			}
+			.musicaMenu{
+				margin-left: 40%;
+				display: flex;
+				margin-top: 20px;
+				color:white;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="/p5/img/principal/cap_pacman.png"/>
+		<div class="menu">
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="/p5/empty-example/index.html">START GAME</a>
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="help.html" onclick="guardarMusica()">HELP</a>
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="informacio.html">INFORMACIO</a>
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="credits.html">CREDITS</a>
+			<a type="button" class="btn btn-primary btn-lg btn-block" href="configuracio.html">CONFIGURACIO</a>
+			<div class="musicaMenu">
+				<p style="margin-top: 10px; font-size: 20px;">Vols musica ?&nbsp;&nbsp;&nbsp;</p>
+				<input type="checkbox" onclick="musica()" />
+				<p id="musicaSiNo" style="font-size: 20px; margin-left: 10px;margin-top: 10px; color: red;">No</p>
+			</div>
+		</div>
+
+		<!--musica (youtube)
+		<div style="position: fixed; z-index: -99; width: 0%; height: 0%">
+		  <iframe frameborder="0" height="100%" width="100%"
+			src="https://youtube.com/embed/v2a5yMUmcp0?autoplay=1&controls=0&showinfo=0&autohide=1">
+		  </iframe>
+		</div>--><!--hidden-->
+			<div class="musica">
+			<audio id="musica" hidden controls loop autoplay name="media">
+				<source id="source" src="" type="audio/mp3" >
+			</audio>
+			</div>
+			<script>
+			var tempsMusica;
+			var primerCop=true;
+			var i=0;
+			function musica(){
+				if(primerCop){
+					document.getElementById("source").src = "/p5/musica/pacman_remix.mp3";
+					if(i==0){
+						document.getElementById("musica").load();
+						document.getElementById("musicaSiNo").innerText = "Si";
+						document.getElementById("musicaSiNo").style.color = "green"
+					}else{
+						document.getElementById("musica").play();
+						document.getElementById("musicaSiNo").innerText = "Si";
+						document.getElementById("musicaSiNo").style.color = "green"
+					}
+					i++;
+					primerCop=false;
+				}else{
+						document.getElementById("musica").pause();
+						document.getElementById("musicaSiNo").innerText = "No";
+						document.getElementById("musicaSiNo").style.color = "red"
+						primerCop=true;
+				}
+			}
+			function guardarMusica(){
+				tempsMusica = document.getElementById("musica").currentTime();
+				sessionStorage.setItem('musica',tempsMusica);
+			}
+
+
+				/*window.onload = function(){
+					var txt= "Vols musica a la pagina?";
+					var musica = confirm(txt);
+					if (musica == true) {
+						var reproductor=document.getElementById("musica");
+						reproductor.autoplay=true;
+						reproductor.load();
+					} else {
+						alert("La vida amb musica sempre es millor pero vale :)")
+					}
+				}*/
+
+				</script>
+
+	</body>
+</html>
