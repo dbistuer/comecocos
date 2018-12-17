@@ -52,7 +52,7 @@ function updateReloj(){
     usuari = sessionStorage.getItem("usuari");
     dificultat = sessionStorage.getItem("nivell");
     document.getElementById('usu').innerHTML = "Usuari: "+ usuari;
-    document.getElementById('niv').innerHTML = "Dificultat: "+ dificultat;
+    document.getElementById('niv').innerHTML = "Dificultat: <b style='font-size: 20px;'>"+ dificultat+"</b>";
       if (dificultat==1) {
         totalTiempo=45;
       }else if (dificultat==2) {
