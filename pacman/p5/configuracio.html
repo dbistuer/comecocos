@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Configuracio</title>
+    <style>
+      body{
+        color: white;
+        background-color: black;
+      }
+      .botons-top{
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+      h1{
+        text-align: center;
+      }
+      .configuracio{
+        margin-left: 35%;
+      }
+      .musica{
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				color: white;
+				text-align: center;
+			}
+			.musicaMenu{
+				margin-left: 10%;
+				display: flex;
+				margin-top: 470px;
+				color:white;
+			}
+    </style>
+  </head>
+  <body>
+    <div class="botons-top">
+      <button class="btn btn-primary" onclick="history.back()" >Enrere</button>
+    </div>
+    <h1>Configuracio</h1>
+    <br /><br />
+    <div class="configuracio">
+      Nom d'usuari:
+      <input type="text" id="nusuari" style="margin-left: 40px;" />
+      <br />
+      Email:
+      <input type="email" id="correu" style="margin-left: 94px;"/>
+      <br />
+      Nivell de dificultat:
+      <input type="number" id="nivell" min="0" max="10" title="Dificultat de 0 a 10" value="5" style="margin-left: 13px;" />
+      <br /><br />
+      <button class="btn btn-success" type="submit" onclick="desarSessio()">Desa</button>
+    </div>
+    <div class="musicaMenu">
+      <p style="margin-top: 26px;">Vols musica ?&nbsp;&nbsp;&nbsp;</p>
+      <input type="checkbox" onclick="musica()" />
+      <p id="musicaSiNo" style=" margin-left: 10px;margin-top: 26px; color: red;">No</p>
+    </div>
+    <div class="musica">
+    <audio id="musica" hidden controls loop autoplay name="media">
+      <source id="source" src="" type="audio/mp3" >
+    </audio>
+    </div>
+    <script>
+      var primerCop=true;
+      var i=0;
+      function musica(){
+        if(primerCop){
+          document.getElementById("source").src = "/p5/musica/pacman_remix.mp3";
+          if(i==0){
+            document.getElementById("musica").load();
+            document.getElementById("musicaSiNo").innerText = "Si";
+            document.getElementById("musicaSiNo").style.color = "green"
+          }else{
+            document.getElementById("musica").play();
+            document.getElementById("musicaSiNo").innerText = "Si";
+            document.getElementById("musicaSiNo").style.color = "green"
+          }
+          i++;
+          primerCop=false;
+        }else{
+            document.getElementById("musica").pause();
+            document.getElementById("musicaSiNo").innerText = "No";
+            document.getElementById("musicaSiNo").style.color = "red"
+            primerCop=true;
+        }
+      }
+
+      function desarSessio(){
+					var nusuari = document.getElementById("nusuari").value
+					var correu = document.getElementById("correu").value;
+          var nivell = Number(document.getElementById("nivell").value);
+					sessionStorage.setItem("usuari",nusuari);
+					sessionStorage.setItem("correu",correu);
+          sessionStorage.setItem("nivell",nivell);
+					alert("Tot correcte s'han desat la teva configuracio correctament.");
+				}
+    </script>
+  </body>
+</html>
