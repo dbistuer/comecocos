@@ -100,8 +100,8 @@ if (keyIsDown(LEFT_ARROW)) {
   if (keyIsDown(DOWN_ARROW)) {
     myPacman.moureDreta();
   }
+  win();
 }
-
 
 function keyPressed(){
   if(keyCode==RIGHT_ARROW ){
@@ -112,5 +112,12 @@ function keyPressed(){
     myPacman.moureUp();
   }else if(keyCode==DOWN_ARROW){
     myPacman.moureAvaix();
+  }
+  win();
+}
+function win(){
+  if(foodMapa.toString()=="" && raimMapa.toString()==""){
+    alert("As guanyat CAMPEON!;P");
+    window.location.reload();
   }
 }
