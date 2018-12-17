@@ -6,23 +6,35 @@
 		/*La tipografia de pacman*/
 			@font-face{
 				font-family: 'DANI';
-				src: url(/p5/tipografia/PAC-FONT.TTF) format('truetype');
+				src: url(tipografia/PAC-FONT.TTF) format('truetype');
+			}
+			.btn-primary{
+				background-color: black;
+				border-color: grey;
 			}
 			.centrar{
         text-align: center;
 			}
 			body{
-				background-color: black;
+				background-color: #003399;
         color: white;
 			}
 			p{
 				font-size:20px;
-				/*font-family: DANI;*/
+				font-family: DANI;
 				color: white;
+			}
+			p i{
+				font-family: sans-serif;
+				font-style: normal;
 			}
 			button{
 				margin-top: 20px;
 				margin-left: 20px;
+				font-family: DANI;
+			}
+			h1{
+				font-family: DANI;
 			}
       .texte{
         margin-left: 30%;
@@ -53,14 +65,14 @@
       </div>
       <div class="texte">
         <p><b>Creacio:</b>Daniel Bistuer Marco </p>
-        <p><b>Tipògrafia de la lletra:</b> Fontalicious ®</p>
+        <p><b>Tipografia de la lletra:</b> Fontalicious ®</p>
         <p><b>Imatges:</b>  Flaticon ®</p>
-        <p><b>Agraiments:</b>  Eduard Gutierrez (Ajuda amb el codi en moments de bloqueig)</p>
+        <p><b>Agraiments:</b>  Eduard Gutierrez <i>(</i>Ajuda amb el codi en moments de bloqueig<i>)</i></p>
         <p><b>Musica pacman:</b> http://www.sonidosmp3gratis.com </p>
-        <p><b>Musica pagines:</b> VexD&B </p>
+        <p><b>Musica pagines:</b> VexD<i>&</i>B </p>
       </div>
       <div class="musicaMenu">
-				<p style="margin-top: 26px;">Vols musica ?&nbsp;&nbsp;&nbsp;</p>
+				<p style="margin-top: 26px;">Vols musica <i>?</i>&nbsp;&nbsp;&nbsp;</p>
 				<input type="checkbox" onclick="musica()" />
 				<p id="musicaSiNo" style=" margin-left: 10px;margin-top: 26px; color: red;">No</p>
 			</div>
@@ -74,7 +86,7 @@
       	var i=0;
         function musica(){
           if(primerCop){
-            document.getElementById("source").src = "/p5/musica/pacman_remix.mp3";
+            document.getElementById("source").src = "musica/pacman_remix.mp3";
             if(i==0){
               document.getElementById("musica").load();
               document.getElementById("musicaSiNo").innerText = "Si";

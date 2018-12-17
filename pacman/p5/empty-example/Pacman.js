@@ -4,7 +4,7 @@ class Pacman extends GameObject{
     super(row,col);
     this.direction=2;
     this.score =0;
-    this.lives = 3;
+    this.lives = 1;
     this.frame=0;
     this.perimetre = 16;
   }
@@ -61,7 +61,8 @@ xocRoca(roca){
   var distancia = dist(this.row,this.col,roca.row,roca.col);
   if(distancia<16){
     this.lives--;
-    alert('Vides: '+this.lives);
+    alert('Vides restants: '+this.lives);
+    document.getElementById('vid').innerHTML = "Vides restants: <b style='font-size: 20px;'>"+myPacman.lives+"</b>";
     reposicionarPacman(this.direction);
   }else{
     return false;
