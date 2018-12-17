@@ -4,9 +4,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Configuracio</title>
     <style>
+    /*La tipografia de pacman*/
+    @font-face{
+      font-family: 'DANI';
+      src: url(tipografia/PAC-FONT.TTF) format('truetype');
+    }
+    button{
+      font-family: DANI;
+    }
+    .btn-primary{
+      background-color: black;
+      border-color: grey;
+    }
       body{
+        font-family: DANI;
         color: white;
-        background-color: black;
+        background-color: #003399;
+      }
+      body i{
+        font-family: sans-serif;
+        font-style: normal;
       }
       .botons-top{
         margin-top: 20px;
@@ -41,19 +58,19 @@
     <h1>Configuracio</h1>
     <br /><br />
     <div class="configuracio">
-      Nom d'usuari:
+      Nom d<i>'</i>usuari:
       <input type="text" id="nusuari" style="margin-left: 40px;" />
       <br />
       Email:
       <input type="email" id="correu" style="margin-left: 94px;"/>
       <br />
       Nivell de dificultat:
-      <input type="number" id="nivell" min="0" max="10" title="Dificultat de 0 a 10" value="5" style="margin-left: 13px;" />
+      <input type="number" id="nivell" min="0" max="10" title="Dificultat de 0 a 10" value="5" style="margin-left: 13px; font-family: sans-sernif;" />
       <br /><br />
       <button class="btn btn-success" type="submit" onclick="desarSessio()">Desa</button>
     </div>
     <div class="musicaMenu">
-      <p style="margin-top: 26px;">Vols musica ?&nbsp;&nbsp;&nbsp;</p>
+      <p style="margin-top: 26px;">Vols musica <i>?</i>&nbsp;&nbsp;&nbsp;</p>
       <input type="checkbox" onclick="musica()" />
       <p id="musicaSiNo" style=" margin-left: 10px;margin-top: 26px; color: red;">No</p>
     </div>
@@ -67,7 +84,7 @@
       var i=0;
       function musica(){
         if(primerCop){
-          document.getElementById("source").src = "/p5/musica/pacman_remix.mp3";
+          document.getElementById("source").src = "musica/pacman_remix.mp3";
           if(i==0){
             document.getElementById("musica").load();
             document.getElementById("musicaSiNo").innerText = "Si";
