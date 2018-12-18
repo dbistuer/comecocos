@@ -73,7 +73,7 @@
       <button class="btn btn-primary" onclick="history.back()" >Enrere</button>
     </div>
     <div class="inportant">
-    <h3 id='usu' onload="posicionar()">Usuari: </h3>
+    <h3 id='usu' >Usuari: </h3>
     <p id='niv'></p>
     <p id='vid'>Vides restants: <b style="font-size: 20px;">1</b></p>
     <p id="puntuacio"> Puntuacio: <b style="font-size: 20px;">0</b></p>
@@ -124,26 +124,15 @@ function updateReloj(){
     if(totalTiempo<6){
       document.getElementById('CuentaAtras').style.color= "red";
       document.getElementById('CuentaAtras').innerHTML = "<b style='font-size: 20px;'>0:"+totalTiempo+"</b>";
-
-      document.getElementById('vid').innerHTML = "Vides restants: <b style='font-size: 20px;'>"+myPacman.lives+"</b>";
     }else{
       document.getElementById('CuentaAtras').style.color= "yellow";
       document.getElementById('CuentaAtras').innerHTML = "<b style='font-size: 20px;'>0:"+totalTiempo+"</b>";
     }
     if(totalTiempo==0)
     {
-        /*window.location=url;*/
-      if(myPacman.lives==0){
-        myPacman.lives= myPacman.lives-1;
-        document.getElementById('vid').innerHTML = "Vides restants: <b style='font-size: 20px;'>"+myPacman.lives+"</b>";
-        alert("Vides restants: "+myPacman.lives);
-        primerCop=true;
-        updateReloj();
-      }else{
         alert('Game over!!');
         window.location.reload();
         //window.location=url;
-      }
     }else{
         totalTiempo-=1;
         setTimeout("updateReloj()",1000);
