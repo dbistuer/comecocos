@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
     @font-face{
       font-family: 'DANI';
@@ -12,10 +13,43 @@
     }
     canvas{
       margin-left: 35%;
-      margin-top: 10%;
+      margin-top: 10px;
     }
     p b, h2 b{
       font-family: sans-serif;
+    }
+    .btn-primary{
+      background-color: black;
+      border-color: grey;
+    }
+    button{
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-bottom: 20px;
+      font-family:DANI;
+    }
+    .inportant{
+      display: block;
+      border: 3px solid;
+      border-color: yellow;
+      border-radius: 25px;
+      padding: 10px;
+      width: 400px;
+      background-color: black;
+      color: yellow;
+    }
+    .partida{
+      clear: both;
+      display: flex;
+      margin-top: 20px;
+    }
+    #CuentaAtras{
+      margin-top: -7px;
+      margin-left: 20px;
+      border: 2px solid yellow;
+      width: 60px;
+      text-align: center;
+      height: 35px;
     }
 
     </style>
@@ -35,11 +69,20 @@
     <script src="Pacman.js"></script>
   </head>
   <body>
+    <div class="botons-top">
+      <button class="btn btn-primary" onclick="history.back()" >Enrere</button>
+    </div>
+    <div class="inportant">
     <h3 id='usu' onload="posicionar()">Usuari: </h3>
     <p id='niv'></p>
     <p id='vid'>Vides restants: <b style="font-size: 20px;">1</b></p>
+    <p id="puntuacio"> Puntuacio: <b style="font-size: 20px;">0</b></p>
+<div class="partida">
+    <p>Partida perduda en -></p>
+    <p id='CuentaAtras'></p>
+  </div>
+  </div>
 
-<h2 id='CuentaAtras'></h2>
     <script>
     var usuari;
     var dificultat;
@@ -80,12 +123,12 @@ function updateReloj(){
     }
     if(totalTiempo<6){
       document.getElementById('CuentaAtras').style.color= "red";
-      document.getElementById('CuentaAtras').innerHTML = "Partida perduda en-> <b style='font-size: 20px;'>0:"+totalTiempo+"</b>";
+      document.getElementById('CuentaAtras').innerHTML = "<b style='font-size: 20px;'>0:"+totalTiempo+"</b>";
 
       document.getElementById('vid').innerHTML = "Vides restants: <b style='font-size: 20px;'>"+myPacman.lives+"</b>";
     }else{
-      document.getElementById('CuentaAtras').style.color= "black";
-      document.getElementById('CuentaAtras').innerHTML = "Partida perduda en-> <b style='font-size: 20px;'>0:"+totalTiempo+"</b>";
+      document.getElementById('CuentaAtras').style.color= "yellow";
+      document.getElementById('CuentaAtras').innerHTML = "<b style='font-size: 20px;'>0:"+totalTiempo+"</b>";
     }
     if(totalTiempo==0)
     {
