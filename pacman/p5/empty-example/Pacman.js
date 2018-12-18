@@ -40,11 +40,7 @@ class Pacman extends GameObject{
 eatFood(menjar){
   var distancia=dist(this.row,this.col,menjar.row,menjar.col);
   if(distancia<16){
-    if(sessionStorage.getItem("nivell")!=null){
-      this.score=this.score + parseInt(sessionStorage.getItem("nivell"));
-    }else{
       this.score++;
-    }
     document.getElementById('puntuacio').innerHTML = "Puntuacio: <b style='font-size: 20px;'>"+this.score+"</b>";
     return true;
   }else{
